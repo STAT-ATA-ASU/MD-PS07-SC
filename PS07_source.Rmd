@@ -32,7 +32,7 @@ If you get stuck as you are working through this Problem Set, we **strongly reco
 
 ### Key points on symbols:{-} 
 
-Symbol           | POPULATION PARAMETER         | SAMPLE PARAMETER
+Symbol           | POPULATION PARAMETER         | SAMPLE STATISTIC
 ---------------- | ---------------------------- | --------------
 Number of cases  | $N$                          | $n$
 Proportion       | $p$                          | $\hat{p}$
