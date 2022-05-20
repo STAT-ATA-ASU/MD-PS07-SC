@@ -100,8 +100,10 @@ Again, for this exercise, the **population** of interest will be **ALL** 2538 in
 ```{r}
 gss_14 %>% 
   summarize(divorced = sum(marital == "Divorced"), 
-            N = n()) %>% 
-  mutate(p = divorced / N)
+            N = n(),
+            p1 = mean(marital == "Divorced")) %>% 
+  mutate(p = divorced / N) -> ans
+ans
 ```
 
 
@@ -109,7 +111,7 @@ gss_14 %>%
 > Note that we use $N$ for the size of the full population of 2538 people, and $p$ because we are calculating the TRUE population proportion $p$.
 
 
-> Note that no inference to the population is needed. We do not need to use a **sample** to try to infer something about the **true poulation proportion $p$** of divorced people in this neighborhood in 2014. We know that $p$ = 0.16. 
+> Note that no inference to the population is needed. We do not need to use a **sample** to try to infer something about the **true poulation proportion $p$** of divorced people in this neighborhood in 2014. We know that $p = `r ans$p`$. 
 
 
 In other words, this problem set is not a realistic reflection of a real life problem. However, for this problem set, we are *simulating* the act of sampling from this neighborhood population to understand and study how factors like sample size influence **sampling variation**.
@@ -142,7 +144,7 @@ n50_1rep %>%
   mutate(p_hat = divorce_count/ n)
 ```
 
-This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of what the **true population** proportion $p$ of `Divorced` people is in this neighborhood, based on a sample of only $50$ people. It is reasonably close to the true population proportion $p = 0.16$ we calculated from the full population. 
+This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of what the **true population** proportion $p$ of `Divorced` people is in this neighborhood, based on a sample of only $50$ people. It is reasonably close to the true population proportion $p = `r ans$p`$ we calculated from the full population. 
 
 ***
 
@@ -151,6 +153,7 @@ This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of w
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++ 
 
 </div> 
 
@@ -161,6 +164,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div> 
 
@@ -221,6 +225,7 @@ Be sure to look at `n50_rep1000` in the data viewer to get a sense of these 1000
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div> 
 
@@ -230,6 +235,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div> 
 
@@ -270,10 +276,17 @@ ggplot(p_hat_n50_1000rep, aes(x = p_hat)) +
 
 ***
 
-5. Based on your histogram, what appeared to be a very common value of $\hat{p}$? What was a very uncommon value?
+5. Based on your histogram, what appeared to be a very common value of $\hat{p}$? What was a very uncommon value?  Specifically, find the 1%, 99%, the mean, and the standard deviation of the values stored in `p_hat_n50` to help answer the question.
 
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
+
+```{r}
+# Your code here
+```
+
++
+
 
 
 </div> 
@@ -299,11 +312,12 @@ p_hat_n50_1000rep %>%
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div> 
 
 
-7.  Use the `rep_sample_n` function to collect 1000 virtual samples of size $n = 15$. **BE SURE TO NAME YOUR SAMPLE SOMETHING NEW, TO ENSURE YOU CAN DISTINGUISH IT FROM THE n = 50 SAMPLE ABOVE!**  Use a seed of 910.
+7.  Use the `rep_sample_n` function to collect 1000 virtual samples of size $n = 15$. Store the 1000 virtual samples in an object named `n15_1000rep`.  Use a seed of 910.
 
 ```{r}
 # Type your code and comments inside the code chunk
@@ -311,7 +325,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 ```
 
 
-8. Calculate sample proportion $\hat{p}$ of people who reported they were `Divorced` for each replicate of your $n = 15$ sampling.
+8. Calculate sample proportion $\hat{p}$ of people who reported they were `Divorced` for each replicate of your $n = 15$ sampling.  Store the results in `ques8` and display the first six rows of `ques8`.
 
 
 ```{r}
@@ -320,7 +334,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 ```
 
 
-9.  Visualize the sampling distribution of $\hat{p}$ from your $n = 15$ sampling with a histogram. 
+9.  Visualize the sampling distribution of $\hat{p}$ from your $n = 15$ sampling with a purple histogram. 
 
 ```{r}
 # Type your code and comments inside the code chunk
@@ -343,6 +357,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div> 
 
@@ -352,13 +367,14 @@ Type your complete sentence answer here using inline R code and delete this comm
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div>
 
 ***
 
 
-13.  Use the `rep_sample_n` function to collect 1000 virtual samples of size $n = 600$. **Note: BE SURE TO NAME YOUR SAMPLE SOMETHING NEW, TO ENSURE YOU CAN DISTINGUISH IT FROM THE $n = 50$, and $n = 15$ SAMPLES ABOVE!**  Use a seed value of 84.
+13.  Use the `rep_sample_n` function to collect 1000 virtual samples of size $n = 600$. Store the 1000 virtual samples in an object named `n600_1000rep`. Use a seed of 84.
 
 ```{r}
 # Type your code and comments inside the code chunk
@@ -366,7 +382,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 ```
 
 
-14.  Calculate the proportion $\hat{p}$ of people who reported they were `Divorced`for each replicate of your $n = 600$ sampling.
+14.  Calculate the proportion $\hat{p}$ of people who reported they were `Divorced`for each replicate of your $n = 600$ sampling. Store the results in `ques14` and display the first six rows of `ques14`.
 
 ```{r}
 # Type your code and comments inside the code chunk
@@ -389,6 +405,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++
 
 </div>
 
@@ -400,13 +417,16 @@ Type your complete sentence answer here using inline R code and delete this comm
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++ 
 
 </div>
 
 ***
 
 
-![](http://digital-desert.com/victor-valley/599-bell-mountain-r6760.jpg)
+```{r, echo = FALSE, fig.align = "center"}
+knitr::include_graphics("http://digital-desert.com/victor-valley/599-bell-mountain-r6760.jpg")
+```
  
  
 ## Estimating $\hat{p}$ and the Standard Error of $\hat{p}$ from a Single Sample (revisited)
@@ -430,6 +450,9 @@ $$\widehat{SE}_{\hat{p}}  \approx  \sqrt{\frac{\hat{p} \times (1-\hat{p})}{n}}$$
 set.seed(53)
 n15_1rep <- gss_14 %>% 
   rep_sample_n(size = 15, reps = 1)
+# and
+n50_1rep <- gss_14 %>% 
+  rep_sample_n(size = 50, reps = 1)
 ```
 
 
@@ -469,6 +492,7 @@ Sample size n  | SE via sd of sampling distribution | SE via one sample and form
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
 
++ 
 
 </div>
 
