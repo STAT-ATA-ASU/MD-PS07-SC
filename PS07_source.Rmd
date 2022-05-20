@@ -111,7 +111,7 @@ ans
 > Note that we use $N$ for the size of the full population of 2538 people, and $p$ because we are calculating the TRUE population proportion $p$.
 
 
-> Note that no inference to the population is needed. We do not need to use a **sample** to try to infer something about the **true poulation proportion $p$** of divorced people in this neighborhood in 2014. We know that $p = `r ans$p`$. 
+> Note that no inference to the population is needed. We do not need to use a **sample** to try to infer something about the **true population proportion $p$** of divorced people in this neighborhood in 2014. We know that $p = `r ans$p`$. 
 
 
 In other words, this problem set is not a realistic reflection of a real life problem. However, for this problem set, we are *simulating* the act of sampling from this neighborhood population to understand and study how factors like sample size influence **sampling variation**.
