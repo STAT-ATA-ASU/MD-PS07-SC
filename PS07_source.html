@@ -1640,11 +1640,12 @@ div.tocify {
 
 <h1 class="title toc-ignore">Problem Set 07</h1>
 <h4 class="author">Your Name Goes Here</h4>
-<h4 class="date">Last compiled: May 20, 2022 at 11:51:22 AM</h4>
+<h4 class="date">Last compiled: July 18, 2022 at 10:11:24 AM</h4>
 
 </div>
 
 
+<hr />
 <div id="background" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Background</h1>
 <p>For this exercise, we will mimic the tactile sampling you did in class with virtual sampling. We will use some data from the <a href="http://gss.norc.org/">general social survey</a>, an annual personal-interview survey conducted in the United States. The survey is designed to monitor changes in both social characteristics and attitudes.</p>
@@ -1876,6 +1877,7 @@ head(n50_1rep)</code></pre>
 <li></li>
 </ul>
 </div>
+<hr />
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Why</strong> did everyone get a different estimate?</li>
 </ol>
@@ -1951,6 +1953,7 @@ n50_1000rep &lt;- gss_14 %&gt;%
 <li></li>
 </ul>
 </div>
+<hr />
 <ol start="4" style="list-style-type: decimal">
 <li>What is the sample size <span class="math inline">\(n\)</span> for each of the <span class="math inline">\(1000\)</span> samples we took? (i.e. how many humans are sampled in each replicate)?</li>
 </ol>
@@ -2116,18 +2119,22 @@ p_hat_n50_1000rep %&gt;%
 <li></li>
 </ul>
 </div>
+<hr />
 <ol start="7" style="list-style-type: decimal">
 <li>Use the <code>rep_sample_n</code> function to collect 1000 virtual samples of size <span class="math inline">\(n = 15\)</span>. Store the 1000 virtual samples in an object named <code>n15_1000rep</code>. Use a seed of 910.</li>
 </ol>
 <pre class="r"><code># Type your code and comments inside the code chunk</code></pre>
+<hr />
 <ol start="8" style="list-style-type: decimal">
 <li>Calculate sample proportion <span class="math inline">\(\hat{p}\)</span> of people who reported they were <code>Divorced</code> for each replicate of your <span class="math inline">\(n = 15\)</span> sampling. Store the results in <code>ques8</code> and display the first six rows of <code>ques8</code>.</li>
 </ol>
 <pre class="r"><code># Type your code and comments inside the code chunk</code></pre>
+<hr />
 <ol start="9" style="list-style-type: decimal">
 <li>Visualize the sampling distribution of <span class="math inline">\(\hat{p}\)</span> from your <span class="math inline">\(n = 15\)</span> sampling with a purple histogram.</li>
 </ol>
 <pre class="r"><code># Type your code and comments inside the code chunk</code></pre>
+<hr />
 <ol start="10" style="list-style-type: decimal">
 <li>Calculate the mean of the <span class="math inline">\(n = 15\)</span> sampling distribution, and the standard error of the <span class="math inline">\(n = 15\)</span> sampling distribution</li>
 </ol>
@@ -2142,6 +2149,7 @@ p_hat_n50_1000rep %&gt;%
 <li></li>
 </ul>
 </div>
+<hr />
 <ol start="12" style="list-style-type: decimal">
 <li>Explain any observed differences from 11.</li>
 </ol>
@@ -2156,14 +2164,17 @@ p_hat_n50_1000rep %&gt;%
 <li>Use the <code>rep_sample_n</code> function to collect 1000 virtual samples of size <span class="math inline">\(n = 600\)</span>. Store the 1000 virtual samples in an object named <code>n600_1000rep</code>. Use a seed of 84.</li>
 </ol>
 <pre class="r"><code># Type your code and comments inside the code chunk</code></pre>
+<hr />
 <ol start="14" style="list-style-type: decimal">
 <li>Calculate the proportion <span class="math inline">\(\hat{p}\)</span> of people who reported they were <code>Divorced</code>for each replicate of your <span class="math inline">\(n = 600\)</span> sampling. Store the results in <code>ques14</code> and display the first six rows of <code>ques14</code>.</li>
 </ol>
 <pre class="r"><code># Type your code and comments inside the code chunk</code></pre>
+<hr />
 <ol start="15" style="list-style-type: decimal">
 <li>Calculate the mean of the <span class="math inline">\(n = 600\)</span> sampling distribution, and the standard error of the <span class="math inline">\(n = 600\)</span> sampling distribution.</li>
 </ol>
 <pre class="r"><code># Type your code and comments inside the code chunk</code></pre>
+<hr />
 <ol start="16" style="list-style-type: decimal">
 <li>Was there more <strong>variability</strong> from sample to sample when we took a sample size of 600 or a sample size of 50? <strong>Explain what evidence you have for assessing this</strong>.</li>
 </ol>

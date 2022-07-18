@@ -12,6 +12,8 @@ output:
     css: MyLab.css 
 ---
 
+____________
+
 ```{r include = FALSE}
 # Do not edit this code block/chunk!
 library(knitr)
@@ -28,7 +30,7 @@ The **population** of interest will be **ALL** 2538 individuals living in a sing
 If you get stuck as you are working through this Problem Set, we **strongly recommend** you re-read Chapter 8 in ModernDive, in particular subsections 8.3.1 on "Terminology & notation" and 8.3.2 on "Statistical definitions". These terminology, notation, and definitions related to sampling are definitely tricky at first; the best method to master them is practice, practice, practice.
 
 
-***
+____________
 
 ### Key points on symbols:{-} 
 
@@ -38,7 +40,7 @@ Number of cases  | $N$                          | $n$
 Proportion       | $p$                          | $\hat{p}$
 Standard error   | $SE$                         | $\widehat{SE}$
 
-***
+____________
 
 ## Setup{-}
 
@@ -60,7 +62,7 @@ glimpse(gss_cat)
 
 Be sure to examine the data in the **viewer**. Type `?gss_cat` in the **console** to see a description of the variables in this data set. 
 
-***
+____________
 
 # Exploratory Data Wrangling
 
@@ -79,7 +81,7 @@ gss_14  %>%
   distinct(marital) 
 ```
 
-***
+____________
 
 ## Setting a Seed{-}
 
@@ -91,7 +93,7 @@ You can set a seed with any number.
 set.seed(45)
 ```
 
-***
+____________
 
 # The True Population Proportion $p$ of Divorced People
 
@@ -116,7 +118,7 @@ ans
 
 In other words, this problem set is not a realistic reflection of a real life problem. However, for this problem set, we are *simulating* the act of sampling from this neighborhood population to understand and study how factors like sample size influence **sampling variation**.
 
-***
+____________
 
 # Demo: Sampling 50 People in the Neighborhood
 
@@ -146,7 +148,7 @@ n50_1rep %>%
 
 This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of what the **true population** proportion $p$ of `Divorced` people is in this neighborhood, based on a sample of only $50$ people. It is reasonably close to the true population proportion $p = `r ans$p`$ we calculated from the full population. 
 
-***
+____________
 
 1.  Ask two of your classmates what their estimate of $\hat{p}$ was. How do the $\hat{p}$ estimates from different samples compare? 
 
@@ -157,7 +159,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
-
+____________
 
 2. **Why** did everyone get a different estimate?
 
@@ -168,7 +170,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
-***
+____________
 
 ## Estimating $\widehat{SE}$ from a Single Sample
 
@@ -192,7 +194,7 @@ n50_1rep %>%
          se_hat = sqrt(p_hat * (1 - p_hat) / n))
 ```
 
-***
+____________
 
 # Demo: Generating a Sampling Distribution of $\hat{p}$
 
@@ -217,7 +219,7 @@ n50_1000rep <- gss_14 %>%
 Be sure to look at `n50_rep1000` in the data viewer to get a sense of these 1000 samples look like.
 
 
-***
+____________
 
 
 3.  What is the name of the column that identifies which of the 1000 samples each row is from?
@@ -229,6 +231,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
+____________
 
 4. What is the sample size $n$ for each of the $1000$ samples we took? (i.e. how many humans are sampled in each replicate)?
 
@@ -239,7 +242,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
-*** 
+____________ 
 
 The following code chunk calculates the sample proportion $\hat{p}$ of people who reported they were divorced for each of the **1000 samples**. 
 
@@ -274,7 +277,7 @@ ggplot(p_hat_n50_1000rep, aes(x = p_hat)) +
 ```
 
 
-***
+____________
 
 5. Based on your histogram, what appeared to be a very common value of $\hat{p}$? What was a very uncommon value?  Specifically, find the 1%, 99%, the mean, and the standard deviation of the values stored in `p_hat_n50` to help answer the question.
 
@@ -291,7 +294,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
-***
+____________
 
 ## Mean and Standard Error of the Sampling Distribution of $\hat{p}$ for $n = 50$
 
@@ -304,7 +307,7 @@ p_hat_n50_1000rep %>%
 ```
 
 
-*** 
+____________
 
 6.  How do these values compare to the estimates we got for $\hat{p}$ and $\widehat{SE}_{\hat{p}}$ for `Divorced` respondents based on your **single** sample of 50 people earlier in this Problem Set?  
 
@@ -316,6 +319,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
+____________
 
 7.  Use the `rep_sample_n` function to collect 1000 virtual samples of size $n = 15$. Store the 1000 virtual samples in an object named `n15_1000rep`.  Use a seed of 910.
 
@@ -324,6 +328,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
+____________
 
 8. Calculate sample proportion $\hat{p}$ of people who reported they were `Divorced` for each replicate of your $n = 15$ sampling.  Store the results in `ques8` and display the first six rows of `ques8`.
 
@@ -333,6 +338,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
+____________
 
 9.  Visualize the sampling distribution of $\hat{p}$ from your $n = 15$ sampling with a purple histogram. 
 
@@ -341,6 +347,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
+____________
 
 10.  Calculate the mean of the $n = 15$ sampling distribution, and the standard error of the $n = 15$ sampling distribution 
 
@@ -349,7 +356,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
-***
+____________
 
 
 11.  How does the standard error of the $n= 15$ sampling distribution compare to the standard error of the $n = 50$ sampling distribution?
@@ -361,6 +368,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div> 
 
+____________
 
 12.  Explain any observed differences from 11.
 
@@ -371,7 +379,8 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div>
 
-***
+
+____________
 
 
 13.  Use the `rep_sample_n` function to collect 1000 virtual samples of size $n = 600$. Store the 1000 virtual samples in an object named `n600_1000rep`. Use a seed of 84.
@@ -381,6 +390,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
+____________
 
 14.  Calculate the proportion $\hat{p}$ of people who reported they were `Divorced`for each replicate of your $n = 600$ sampling. Store the results in `ques14` and display the first six rows of `ques14`.
 
@@ -389,6 +399,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
+____________
 
 15.  Calculate the mean of the $n = 600$ sampling distribution, and the standard error of the $n = 600$ sampling distribution.
 
@@ -398,7 +409,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 ```
 
-
+____________
 
 16.  Was there more **variability** from sample to sample when we took a sample size of 600 or a sample size of 50? **Explain what evidence you have for assessing this**.
 
@@ -409,7 +420,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div>
 
-***
+____________
 
 
 17. Which sampling distribution looked more normally distributed (bell shaped and symmetrical); the one built on n = 15, 50 or 600? **Why?**
@@ -421,7 +432,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 
 </div>
 
-***
+____________
 
 
 ```{r, echo = FALSE, fig.align = "center"}
@@ -441,7 +452,7 @@ So how do we **ESTIMATE** a $\hat{p}$ and a standard error of $\hat{p}$ when we 
 
 $$\widehat{SE}_{\hat{p}}  \approx  \sqrt{\frac{\hat{p} \times (1-\hat{p})}{n}}$$
 
-*** 
+____________
 
 
 18.  Imagine we collected only a single small sample of 15 respondents as given from the code below.
@@ -467,7 +478,7 @@ Following the example from the beginning of the Problem Set (roughly line 138), 
 > You should have gotten a value reasonably close to the estimate we made earlier from our sampling distribution for $n = 15$! Note that when you must estimate a standard error from **only a single sample**, the formula **contains the sample size, n**. The larger the sample size n, the larger the number in the denominator of the SE formula. 
 
 
-***
+____________
 
 Fill in the R Markdown table below with all the standard errors you computed for this problem set. In other words:
 
@@ -485,7 +496,7 @@ Sample size n  | SE via sd of sampling distribution | SE via one sample and form
 
 
 
-***
+____________
 
 20.  Based on what you observed for 19, **IF** you collected a single sample from 600 respondents, do you think the standard error will be smaller or larger than the one you  calculated for $n = 15$. **Explain your reasoning**.
 
@@ -497,8 +508,7 @@ Type your complete sentence answer here using inline R code and delete this comm
 </div>
 
 
-
-***
+____________
 
 
 
