@@ -279,7 +279,7 @@ ggplot(p_hat_n50_1000rep, aes(x = p_hat)) +
 
 ____________
 
-5. Based on your histogram, what appeared to be a very common value of $\hat{p}$? What was a very uncommon value?  Specifically, find the 1%, 99%, the mean, and the standard deviation of the values stored in `p_hat_n50` to help answer the question.
+5. Based on your histogram, what appeared to be a very common value of $\hat{p}$? What was a very uncommon value?  Specifically, find the 1%, 99%, the mean, and the standard deviation of the values stored in `p_hat` to help answer the question.
 
 <div id="answer">
 Type your complete sentence answer here using inline R code and delete this comment.
