@@ -100,7 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified on August 07, 2023 16:39:50 Eastern Daylight Time</p>
+      <p class="date">Last modified on August 24, 2024 10:40:26 Eastern Daylight Time</p>
     </div>
   </div>
   
@@ -266,8 +266,8 @@ R Code
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2014</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gss_YEAR <span class="ot">&lt;-</span> gss_cat <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> YEAR) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gss_YEAR <span class="ot">&lt;-</span> gss_cat <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> YEAR) <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(marital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -284,7 +284,7 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gss_YEAR  <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gss_YEAR  <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(marital) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 1
@@ -323,9 +323,9 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gss_YEAR <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gss_YEAR <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">divorced =</span> <span class="fu">sum</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>), </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">p2 =</span> <span class="fu">mean</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">N =</span> <span class="fu">n</span>(), <span class="at">p2 =</span> <span class="fu">mean</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p =</span> divorced <span class="sc">/</span> N) <span class="ot">-&gt;</span> ans</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -354,7 +354,7 @@ Note
 <div class="callout-body-container callout-body">
 <ul>
 <li><p>We use <span class="math inline">\(N\)</span> for the size of the full population of 2538 people, and <span class="math inline">\(p\)</span> because we are calculating the TRUE population proportion <span class="math inline">\(p\)</span>.</p></li>
-<li><p>Inference to the population is not needed. We do not need to use a <strong>sample</strong> to try to infer something about the <strong>true population proportion</strong> <span class="math inline">\(p\)</span> of divorced people in this neighborhood in 2014. We know that $p = 0.1619385$.</p></li>
+<li><p>Inference to the population is not needed. We do not need to use a <strong>sample</strong> to try to infer something about the <strong>true population proportion</strong> <span class="math inline">\(p\)</span> of divorced people in this neighborhood in 2014. We know that <span class="math inline">\(p = 0.1619385\)</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -391,7 +391,7 @@ R Code
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0804</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n50_1rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n50_1rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">|&gt;</span> </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">1</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(n50_1rep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -430,10 +430,10 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ans1 <span class="ot">&lt;-</span> n50_1rep <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ans1 <span class="ot">&lt;-</span> n50_1rep <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">divorce_count =</span> <span class="fu">sum</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>), </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">phat =</span> <span class="fu">mean</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> divorce_count<span class="sc">/</span> n)</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>ans1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -545,9 +545,9 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>n50_1rep <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>n50_1rep <span class="sc">|&gt;</span> </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">divorce_count =</span> <span class="fu">sum</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>), </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> divorce_count<span class="sc">/</span> n, </span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">se_hat =</span> <span class="fu">sqrt</span>(p_hat <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p_hat) <span class="sc">/</span> n)) <span class="ot">-&gt;</span> n50_1rep_ans</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>n50_1rep_ans</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -593,7 +593,7 @@ R Code
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">19</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>n50_1000rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>n50_1000rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">|&gt;</span> </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">1000</span>)</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(n50_1000rep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -699,10 +699,10 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="ot">&lt;-</span> n50_1000rep <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="ot">&lt;-</span> n50_1000rep <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(replicate) <span class="sc">|&gt;</span> </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">divorce_count =</span> <span class="fu">sum</span>(marital <span class="sc">==</span> <span class="st">"Divorced"</span>), </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_hat =</span> divorce_count <span class="sc">/</span> n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -719,7 +719,7 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="sc">|&gt;</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
@@ -732,7 +732,7 @@ R Code
 5         5            10    50  0.2 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="sc">|&gt;</span> </span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
@@ -844,7 +844,7 @@ R Code
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>p_hat_n50_1000rep <span class="sc">|&gt;</span> </span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">M_p_hat =</span> <span class="fu">mean</span>(p_hat), </span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">SE_p_hat =</span> <span class="fu">sd</span>(p_hat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1254,10 +1254,10 @@ Problem 18
 <p>Imagine we collected only a single small sample of 15 respondents as given from the code below.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">53</span>)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>n15_1rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>n15_1rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">|&gt;</span> </span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">reps =</span> <span class="dv">1</span>)</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>n50_1rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">%&gt;%</span> </span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>n50_1rep <span class="ot">&lt;-</span> gss_YEAR <span class="sc">|&gt;</span> </span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">reps =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Following the example from the beginning of the Problem Set (roughly line 138), estimate the <strong>sample proportion</strong> <span class="math inline">\(\hat{p}\)</span> of people who identified as <code>Divorced</code> based on <code>n15_1rep</code>… AS WELL AS the <strong>standard error of</strong> <span class="math inline">\(\hat{p}\)</span>.</p>
@@ -1325,8 +1325,8 @@ Problem 19 Answers
 <div class="callout-body-container callout-body">
 <table class="table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 41%">
+<col style="width: 25%">
+<col style="width: 40%">
 <col style="width: 34%">
 </colgroup>
 <thead>
@@ -1433,12 +1433,12 @@ Tip
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.2.3 (2023-03-15)
-Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Red Hat Enterprise Linux 9.2 (Plow)
+<pre><code>R version 4.4.1 (2024-06-14)
+Platform: x86_64-redhat-linux-gnu
+Running under: Red Hat Enterprise Linux 9.4 (Plow)
 
 Matrix products: default
-BLAS/LAPACK: /usr/lib64/libopenblasp-r0.3.21.so
+BLAS/LAPACK: FlexiBLAS OPENBLAS-OPENMP;  LAPACK version 3.9.0
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -1448,30 +1448,33 @@ locale:
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 
+time zone: America/New_York
+tzcode source: system (glibc)
+
 attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] moderndive_0.5.5 forcats_1.0.0    dplyr_1.1.2      ggplot2_3.4.2   
-[5] knitr_1.43      
+[1] moderndive_0.6.1 forcats_1.0.0    dplyr_1.1.4      ggplot2_3.5.1   
+[5] knitr_1.48      
 
 loaded via a namespace (and not attached):
- [1] pillar_1.9.0         compiler_4.2.2       tools_4.2.2         
- [4] digest_0.6.33        timechange_0.2.0     lubridate_1.9.2     
- [7] jsonlite_1.8.7       evaluate_0.21        lifecycle_1.0.3     
-[10] tibble_3.2.1         gtable_0.3.3         pkgconfig_2.0.3     
-[13] rlang_1.1.1          cli_3.6.1            rstudioapi_0.15.0   
-[16] yaml_2.3.7           xfun_0.39            fastmap_1.1.1       
-[19] stringr_1.5.0        janitor_2.2.0        withr_2.5.0         
-[22] generics_0.1.3       vctrs_0.6.3          htmlwidgets_1.6.2   
-[25] grid_4.2.2           tidyselect_1.2.0     snakecase_0.11.0    
-[28] glue_1.6.2           R6_2.5.1             fansi_1.0.4         
-[31] rmarkdown_2.23       farver_2.1.1         infer_1.0.4         
-[34] purrr_1.0.1          tidyr_1.3.0          magrittr_2.0.3      
-[37] operator.tools_1.6.3 formula.tools_1.7.1  backports_1.4.1     
-[40] scales_1.2.1         htmltools_0.5.5      colorspace_2.1-0    
-[43] labeling_0.4.2       utf8_1.2.3           stringi_1.7.12      
-[46] munsell_0.5.0        broom_1.0.5         </code></pre>
+ [1] gtable_0.3.5         jsonlite_1.8.8       compiler_4.4.1      
+ [4] tidyselect_1.2.1     stringr_1.5.1        snakecase_0.11.1    
+ [7] tidyr_1.3.1          scales_1.3.0         yaml_2.3.10         
+[10] fastmap_1.2.0        R6_2.5.1             labeling_0.4.3      
+[13] generics_0.1.3       infer_1.0.7          htmlwidgets_1.6.4   
+[16] operator.tools_1.6.3 backports_1.5.0      tibble_3.2.1        
+[19] janitor_2.2.0        munsell_0.5.1        lubridate_1.9.3     
+[22] pillar_1.9.0         formula.tools_1.7.1  rlang_1.1.4         
+[25] utf8_1.2.4           stringi_1.8.4        broom_1.0.6         
+[28] xfun_0.47            timechange_0.3.0     cli_3.6.3           
+[31] withr_3.0.1          magrittr_2.0.3       digest_0.6.36       
+[34] grid_4.4.1           rstudioapi_0.16.0    lifecycle_1.0.4     
+[37] vctrs_0.6.5          evaluate_0.24.0      glue_1.7.0          
+[40] farver_2.1.2         fansi_1.0.6          colorspace_2.1-1    
+[43] rmarkdown_2.28       purrr_1.0.2          tools_4.4.1         
+[46] pkgconfig_2.0.3      htmltools_0.5.8.1   </code></pre>
 </div>
 </div>
 </section>

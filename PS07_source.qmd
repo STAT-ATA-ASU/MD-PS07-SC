@@ -6,7 +6,7 @@ date-format: "[Last modified on] MMMM DD, YYYY HH:mm:ss zzz"
 format: 
   html: default
   pdf: default
-editor: visual
+editor: source
 ---
 
 ```{r include = FALSE}
@@ -20,7 +20,7 @@ library(forcats)
 library(moderndive)
 data(gss_cat)
 YEAR <- sample(unique(gss_cat$year), 1)
-n <- gss_cat %>% filter(year == YEAR) %>% select(marital) %>% nrow()
+n <- gss_cat |> filter(year == YEAR) |> select(marital) |> nrow()
 ```
 
 # Background
@@ -82,8 +82,8 @@ This data set includes many of years of data and many variables. To start, we wi
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
 YEAR
-gss_YEAR <- gss_cat %>% 
-  filter(year == YEAR) %>% 
+gss_YEAR <- gss_cat |> 
+  filter(year == YEAR) |> 
   select(marital)
 ```
 :::
@@ -92,7 +92,7 @@ The following shows the different responses for `marital` status:
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-gss_YEAR  %>% 
+gss_YEAR  |> 
   distinct(marital) 
 ```
 :::
@@ -113,9 +113,9 @@ Again, for this exercise, the **population** of interest will be **ALL** `r n` i
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-gss_YEAR %>% 
+gss_YEAR |> 
   summarize(divorced = sum(marital == "Divorced"), 
-            N = n(), p2 = mean(marital == "Divorced")) %>% 
+            N = n(), p2 = mean(marital == "Divorced")) |> 
   mutate(p = divorced / N) -> ans
 ans
 # Or
@@ -126,7 +126,7 @@ ans
 ::: callout-note
 -   We use $N$ for the size of the full population of `r n` people, and $p$ because we are calculating the TRUE population proportion $p$.
 
--   Inference to the population is not needed. We do not need to use a **sample** to try to infer something about the **true population proportion** $p$ of divorced people in this neighborhood in `r YEAR`. We know that $p = `r ans$p`\$.
+-   Inference to the population is not needed. We do not need to use a **sample** to try to infer something about the **true population proportion** $p$ of divorced people in this neighborhood in `r YEAR`. We know that $p = `r ans$p`$.
 :::
 
 In other words, this problem set is not a realistic reflection of a real life problem. However, for this problem set, we are *simulating* the act of sampling from this neighborhood population to understand and study how factors like sample size influence **sampling variation**.
@@ -146,7 +146,7 @@ Be sure to look at the results in the viewer. Remember, you can set the seed to 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
 set.seed(0804)
-n50_1rep <- gss_YEAR %>% 
+n50_1rep <- gss_YEAR |> 
   rep_sample_n(size = 50, reps = 1)
 head(n50_1rep)
 # OR 
@@ -160,10 +160,10 @@ Next, let's calculate the **sample proportion** $\hat{p}$ of people who identifi
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-ans1 <- n50_1rep %>% 
+ans1 <- n50_1rep |> 
   summarize(divorce_count = sum(marital == "Divorced"), 
             phat = mean(marital == "Divorced"),
-            n = n()) %>% 
+            n = n()) |> 
   mutate(p_hat = divorce_count/ n)
 ans1
 # OR
@@ -178,7 +178,7 @@ Ask two of your classmates what their estimate of $\hat{p}$ was. How do the $\ha
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 1 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ::: {.callout-note icon="false" title="Problem 2"}
@@ -186,7 +186,7 @@ Ask two of your classmates what their estimate of $\hat{p}$ was. How do the $\ha
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 2 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ## Estimating $\widehat{SE}$ from a Single Sample
@@ -205,9 +205,9 @@ The standard error of $\hat{p}$ can be estimated in `R` as follows:
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-n50_1rep %>% 
+n50_1rep |> 
   summarize(divorce_count = sum(marital == "Divorced"), 
-            n = n()) %>%
+            n = n()) |>
   mutate(p_hat = divorce_count/ n, 
          se_hat = sqrt(p_hat * (1 - p_hat) / n)) -> n50_1rep_ans
 n50_1rep_ans
@@ -229,7 +229,7 @@ Instead of running the sampling code chunk for $n = 50$ over and over, we can "c
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
 set.seed(19)
-n50_1000rep <- gss_YEAR %>% 
+n50_1000rep <- gss_YEAR |> 
   rep_sample_n(size = 50, reps = 1000)
 head(n50_1000rep)
 # Consider a different approach
@@ -252,7 +252,7 @@ What is the name of the column that identifies which of the 1000 samples each ro
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 3 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ::: {.callout-note icon="false" title="Problem 4"}
@@ -260,17 +260,17 @@ What is the sample size $n$ for each of the $1000$ samples we took? (i.e. how ma
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 4 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 The following code chunk calculates the sample proportion $\hat{p}$ of people who reported they were divorced for each of the **1000 samples**.
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-p_hat_n50_1000rep <- n50_1000rep %>% 
-  group_by(replicate) %>% 
+p_hat_n50_1000rep <- n50_1000rep |> 
+  group_by(replicate) |> 
   summarize(divorce_count = sum(marital == "Divorced"), 
-            n = n()) %>% 
+            n = n()) |> 
   mutate(p_hat = divorce_count / n)
 ```
 :::
@@ -279,10 +279,10 @@ Examine the first five rows of the results:
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-p_hat_n50_1000rep %>%
+p_hat_n50_1000rep |>
   slice(1:5)
 # Or
-p_hat_n50_1000rep %>% 
+p_hat_n50_1000rep |> 
   head(n = 5)
 ```
 :::
@@ -326,7 +326,7 @@ Based on @fig-n50 and @fig-n50base, what appears to be a very common value of $\
 
 ```
 
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ## Mean and Standard Error of the Sampling Distribution of $\hat{p}$ for $n = 50$
@@ -335,7 +335,7 @@ We can estimate the mean of the sampling distribution by calculating the mean of
 
 ::: {.callout-caution icon="false" title="R Code"}
 ```{r}
-p_hat_n50_1000rep %>% 
+p_hat_n50_1000rep |> 
   summarize(M_p_hat = mean(p_hat), 
             SE_p_hat = sd(p_hat))
 ```
@@ -346,7 +346,7 @@ How do the values computed in the above code chunk compare to the estimates we g
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 6 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ::: {.callout-note icon="false" title="Problem 7"}
@@ -400,7 +400,7 @@ How does the standard error of the $n = 15$ sampling distribution compare to the
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 11 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ::: {.callout-note icon="false" title="Problem 12"}
@@ -408,7 +408,7 @@ Explain any observed differences from 11.
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 12 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ::: {.callout-note icon="false" title="Problem 13"}
@@ -448,7 +448,7 @@ Was there more **variability** from sample to sample when we took a sample size 
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 16 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 ::: {.callout-note icon="false" title="Problem 17"}
@@ -456,7 +456,7 @@ Which sampling distribution looked more normally distributed (bell shaped and sy
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 17 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 
 ```{r, fig.height = 8}
 # Type your code and comments below
@@ -480,10 +480,10 @@ Imagine we collected only a single small sample of 15 respondents as given from 
 
 ```{r, label= "Test1"}
 set.seed(53)
-n15_1rep <- gss_YEAR %>% 
+n15_1rep <- gss_YEAR |> 
   rep_sample_n(size = 15, reps = 1)
 # and
-n50_1rep <- gss_YEAR %>% 
+n50_1rep <- gss_YEAR |> 
   rep_sample_n(size = 50, reps = 1)
 ```
 
@@ -512,11 +512,9 @@ Fill in the Markdown table below with all the standard errors you computed for t
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 19 Answers"}
 | Sample size n | SE via sd of sampling distribution | SE via one sample and formula |
-|-----------------|------------------------------|-------------------------|
+|------------------|-----------------------------|-------------------------|
 | 15            | x                                  | a                             |
 | 50            | y                                  | b                             |
-
-
 
 ```{r, label = "test3"}
 # Your code below
@@ -529,7 +527,7 @@ Based on what you observed for 19, **IF** you collected a single sample from 600
 :::
 
 ::: {.callout-important icon="false" collapse="false" title="Problem 20 Answers"}
-* Delete this and put your text answer here.
+-   Delete this and put your text answer here.
 :::
 
 # Turning in Your Work
